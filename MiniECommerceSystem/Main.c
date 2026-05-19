@@ -126,11 +126,20 @@ void userLogin(void)
 
     if (found)
     {
-        printf("\nLogin successful!");
+        printf("\nLogin successful!\n");
+
+       printf("\n<this is the product list>\n");
+        for (int j = 0; j < sizeof(product_count); j++)
+        {
+            printf("\nproduct no: %d", j + 1);
+            printf("\nproduct name: %s", item[j].product);
+            printf("\nproduct price: %d", item[j].price);
+            printf("\nproduct brandname: %s\n", item[j].brandname);
+        } 
     }
     else
     {
-        printf("\nInvalid credentials!");
+        printf("\nInvalid credentials!\n");
     }
 
     int n;
@@ -234,12 +243,12 @@ int adminVerif(char username[], int password)
 
     if (strcmp(input1.name, username) == 0 && input1.password == password)
     {
-        printf("login sucessful!!");
+        printf("\nlogin sucessful!!\n");
         return 1;
     }
     else
     {
-        printf("error!! login");
+        printf("\nerror!! login\n");
         return 0;
     }
 }
@@ -339,7 +348,7 @@ void addProduct(void)
     printf("product registered sucessfully");
 
     int n;
-    printf("\npress 0 to return\n");
+    printf("\npress 0 to return: ");
     scanf("%d", &n);
 
     if (n == 0)
@@ -362,8 +371,7 @@ void productWFile(int new_product)
     fclose(profile);
 }
 void load_items()
-{
-    FILE *itemfile = fopen("product.bin", "rb");
+{    FILE *itemfile = fopen("product.bin", "rb");
 
     if (itemfile == NULL)
         return;
@@ -450,4 +458,4 @@ void modifyProduct(void)
         break;
     }
 }
-//i worked in this code for 1 week still i cant complete it all
+// i worked in this code for 1 week still i cant complete it all
